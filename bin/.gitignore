@@ -1,3 +1,5 @@
 /Follower.class
 /ServerConnection.class
 /Main.class
+/SyncThread.class
+/UploadThread.class

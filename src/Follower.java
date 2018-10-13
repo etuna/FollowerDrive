@@ -7,11 +7,11 @@ public class Follower {
 	public static final String DESKTOP_PATH = System.getProperty("user.home") + "/Desktop";
 	
 	public String IP;
-	public Follower follower;
+	public static Follower follower;
 	public boolean inited = false;
 	
 	
-	public Follower getInstance() {
+	public static Follower getInstance() {
 		if(follower!=null) {
 			return follower;
 		}else {
