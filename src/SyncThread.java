@@ -27,6 +27,26 @@ public class SyncThread implements Runnable{
 		System.out.println("Sync Thread has been started.");
 	}
 	
-	
+	public ArrayList<SyncPair<Integer, File>> compareFiles(ArrayList<File> currentFiles) {
+		syncFiles.clear();
+		
+		oldFiles = follower.files;
+		this.currentFiles = currentFiles;
+		
+		
+		for(File f: currentFiles) {
+			if(!oldFiles.contains(f)) {
+				syncFiles.add(new SyncPair(1,f));
+			}
+		}
+		for(File f: oldFiles) {
+			if(!currentFiles.contains(f)) {
+				syncFiles.add(new SyncPair(0,f));
+			}
+		}
+		
+		
+		return syncFiles;
+	}
 	
 }
