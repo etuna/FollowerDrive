@@ -1,6 +1,7 @@
 import java.io.File;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class Follower {
 
@@ -9,6 +10,7 @@ public class Follower {
 	public String IP;
 	public static Follower follower;
 	public boolean inited = false;
+	public static ArrayList<File> files;
 	
 	
 	public static Follower getInstance() {

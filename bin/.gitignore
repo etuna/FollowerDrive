@@ -4,3 +4,5 @@
 /SyncThread.class
 /UploadThread.class
 /MasterConnection.class
+/SyncPair.class
+/Pair.class
