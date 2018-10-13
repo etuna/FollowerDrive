@@ -3,7 +3,7 @@ public class Main {
 
 	//Default Values
 	public static final String DEFAULT_MASTER_IP = "localhost";
-	public static final int DEFAULT_MASTER_PORT = 9999;
+	public static final int DEFAULT_MASTER_PORT = 1111;
 	
 	//Variables
 	public static Follower follower;
@@ -14,9 +14,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		
-		
+				
 		Init();
 		
 		//Sync Thread
@@ -28,10 +26,7 @@ public class Main {
 		uploadThread = new UploadThread();
 		uploadThread.Start();
 		uploadThread.run();
-		
-		
-
-		
+				
 	}
 	
 	
