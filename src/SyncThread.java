@@ -17,5 +17,8 @@ public class SyncThread implements Runnable{
 		this.MasterPort = MasterPort;
 	}
 	
+	public void Start() {
+		System.out.println("Sync Thread has been started.");
+	}
 	
 }
