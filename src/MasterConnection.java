@@ -5,35 +5,35 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class ServerConnection {
+public class MasterConnection {
 
 	//Default Values
 	public static final String DEFAULT_SERVER_ADDRESS = "localhost";
 	public static final int DEFAULT_SERVER_PORT = 9999;
 	
 	//Variables
-	private String serverAddress;
-	private int serverPort;
+	private String masterAddress;
+	private int masterPort;
 	private Socket socket;
 	private BufferedReader br; //Input Stream
 	private PrintWriter pw; //Output Stream
 	
 	
 	
-	public ServerConnection(String address, int port) {
-		serverAddress= address;
-		serverPort = port;
+	public MasterConnection(String address, int port) {
+		masterAddress= address;
+		masterPort = port;
 	}
 	
 	
 	public boolean Connect() {
 		
 		try {
-			socket = new Socket(serverAddress, serverPort);
+			socket = new Socket(masterAddress, masterPort);
 			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			pw = new PrintWriter(socket.getOutputStream());
 			
-			System.out.println("Connection Successful, address:"+serverAddress+", port :"+serverPort);
+			System.out.println("Connection Successful, address:"+masterAddress+", port :"+masterPort);
 			return true;
 			
 		} catch (UnknownHostException e) {
@@ -52,7 +52,7 @@ public class ServerConnection {
 			br.close();
 			pw.close();
 			socket.close();
-			System.out.println("Connection Closed. Address: "+serverAddress+", port:"+serverPort);
+			System.out.println("Connection Closed. Address: "+masterAddress+", port:"+masterPort);
 			return true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -6,7 +6,7 @@ public class Main {
 	public static final int DEFAULT_MASTER_PORT = 9999;
 	
 	//Variables
-	public Follower follower;
+	public static Follower follower;
 	public static String MasterIP;
 	public static int MasterPort;
 	static SyncThread syncThread;
@@ -14,6 +14,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		
+		
+		Init();
 		
 		//Sync Thread
 		syncThread = new SyncThread(MasterIP, MasterPort);
@@ -31,14 +35,14 @@ public class Main {
 	}
 	
 	
-	public boolean Init() {
+	public static boolean Init() {
 		
 		follower = Follower.getInstance();
 		setupMaster(DEFAULT_MASTER_IP, DEFAULT_MASTER_PORT);
-		return false;
+		return true;
 	}
 	
-	public void setupMaster(String address, int port) {
+	public static void setupMaster(String address, int port) {
 		MasterIP = address;
 		MasterPort = port;
 	}
