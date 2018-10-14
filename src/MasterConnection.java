@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -75,9 +76,7 @@ public class MasterConnection {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		
+		}		
 		return false;
 	}
 	
@@ -88,23 +87,51 @@ public class MasterConnection {
 		try {
 			System.out.println("File uploading... File name:"+f.getName());
 			dataSocket = new DatagramSocket();
-			FileInputStream fileStream = new FileInputStream(f);
+			FileInputStream fileInputStream = new FileInputStream(f);
 			
-			int fileSize = fileStream.available();
+			int fileSize = (int) f.length();
 			
-			byte[] data = new byte[1024];
+			byte[] data = new byte[fileSize];
 			
-			for(int i = 0; i<1024;i++) {
-				data[i] = (byte)fileStream.read();
+			for(int i = 0; i<fileSize;i++) {
+				data[i] = (byte)fileInputStream.read();
 			}
 			
 			DatagramPacket datagramPacket = new DatagramPacket(data, data.length, Inet4Address.getLocalHost(), DEFAULT_DATAGRAM_PORT);
 			dataSocket.send(datagramPacket);
 			
-			fileStream.close();
+			fileInputStream.close();
 			dataSocket.close();
 			System.out.println("File upload complete. File sent:"+f.getName());
+			return true;
 						
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Error occured during the file upload!");
+		return false;
+	}
+	
+	public boolean downloadFile(String filename, int fileSize) throws IOException {
+		
+		try {
+			System.out.println("File downloading... File name:"+filename);
+			dataSocket = new DatagramSocket();
+			
+			byte[] data = new byte[fileSize];
+			String path = System.getProperty("user.home") + "/Desktop/GoogleDrive/"+filename;
+			
+			FileOutputStream fileOutputStream = new FileOutputStream(path);
+			
+			DatagramPacket datagramPacket = new DatagramPacket(data, fileSize);
+			
+			dataSocket.receive(datagramPacket);
+			
+			
+			
+			
+			
 		} catch (SocketException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

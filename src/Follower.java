@@ -30,7 +30,7 @@ public class Follower {
 		
 			
 			//Creating Directory on desktop
-			makeDir("TDrive", DESKTOP_PATH);
+			makeDir("GoogleDrive", DESKTOP_PATH);
 			
 			//First Sync
 			firstSync();
