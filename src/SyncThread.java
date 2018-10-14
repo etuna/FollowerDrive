@@ -6,6 +6,7 @@ public class SyncThread implements Runnable{
 	
 	public String MasterIP;
 	public int MasterPort;
+	public MasterConnection master_connection;
 	public Follower follower;
 	public ArrayList<File> oldFiles, currentFiles;
 	public ArrayList<SyncPair<Integer, File>> syncFiles;
@@ -21,6 +22,7 @@ public class SyncThread implements Runnable{
 		this.MasterIP = MasterIP;
 		this.MasterPort = MasterPort;
 		follower = Main.follower;
+		master_connection = Main.master_connection;
 	}
 	
 	public void Start() {

@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -17,7 +18,16 @@ public class MasterConnection {
 	private Socket socket;
 	private BufferedReader br; //Input Stream
 	private PrintWriter pw; //Output Stream
+	public static MasterConnection master_connection;
 	
+	public static MasterConnection getInstance() {
+		if(master_connection == null) {
+			master_connection = new MasterConnection(DEFAULT_SERVER_ADDRESS, DEFAULT_SERVER_PORT);
+			return master_connection;
+		} else {
+			return master_connection;
+		}
+	}
 	
 	
 	public MasterConnection(String address, int port) {
@@ -58,6 +68,15 @@ public class MasterConnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		return false;
+	}
+	
+	
+	public boolean uploadFile(File f) {
+		
+		
 		
 		
 		return false;

@@ -41,7 +41,7 @@ public class Main {
 	public static void setupMaster(String address, int port) {
 		MasterIP = address;
 		MasterPort = port;
-		master_connection = new MasterConnection(MasterIP, MasterPort);
+		master_connection = MasterConnection.getInstance();
 	}
 	
 	
