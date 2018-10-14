@@ -3,7 +3,7 @@ public class Main {
 
 	//Default Values
 	public static final String DEFAULT_MASTER_IP = "localhost";
-	public static final int DEFAULT_MASTER_PORT = 1111;
+	public static final int DEFAULT_MASTER_PORT = 9999;
 	
 	//Variables
 	public static Follower follower;
@@ -11,6 +11,7 @@ public class Main {
 	public static int MasterPort;
 	static SyncThread syncThread;
 	static UploadThread uploadThread;
+	public static MasterConnection master_connection;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -40,6 +41,7 @@ public class Main {
 	public static void setupMaster(String address, int port) {
 		MasterIP = address;
 		MasterPort = port;
+		master_connection = new MasterConnection(MasterIP, MasterPort);
 	}
 	
 	
